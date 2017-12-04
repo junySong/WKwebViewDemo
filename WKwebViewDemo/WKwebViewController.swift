@@ -41,12 +41,20 @@ class WKwebViewController: UIViewController,WKScriptMessageHandler,WKNavigationD
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        let string = "showAlert('奏是一个弹框')"
-        webView.evaluateJavaScript(string) { (string,Error) in
-            print(Error)
+//        let string = "alert('tanchukuang')"
+//        webView.evaluateJavaScript(string) { (string,Error) in
+//            print("------")
+//            print(Error)
+//        }
+//在这里我调用的是点击sendAPP按钮的方法（注意打印结果输出，我们并没有点击按钮，但是输出了fuction1方法）
+        webView.evaluateJavaScript("sendApp()")  { (result, error) in
+            guard error == nil else {
+                print("there was an error")
+                print(error)
+                return
+            }
+            
         }
-        print(string)
-        
         
         
     }
